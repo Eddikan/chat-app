@@ -1,4 +1,6 @@
+// src/components/ChatWidget.js
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import io from 'socket.io-client';
 import './ChatWidget.css';
 
@@ -42,4 +44,10 @@ const ChatWidget = () => {
   );
 };
 
-export default ChatWidget;
+// Mount ChatWidget to a div dynamically created
+export const mountChatWidget = () => {
+  const chatContainer = document.createElement('div');
+  chatContainer.id = 'chat-widget';
+  document.body.appendChild(chatContainer);
+  ReactDOM.render(<ChatWidget />, chatContainer);
+};
